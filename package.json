@@ -1,0 +1,37 @@
+{
+    "name": "blackchain-backend",
+    "version": "1.0.0",
+    "description": "this is Private",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon index ",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "node",
+        "backend",
+        "js"
+    ],
+    "author": "Mohamed Habib",
+    "license": "MIT",
+    "dependencies": {
+        "@hapi/joi": "^17.1.0",
+        "axios": "^0.19.2",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "currency": "^4.1.0",
+        "currency.js": "^1.2.2",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-cors": "0.0.3",
+        "express-jwt": "^5.3.1",
+        "fs": "0.0.1-security",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.5.2",
+        "mongoose": "^5.8.10"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.2"
+    }
+}
