@@ -11,7 +11,7 @@ const serverless = require("serverless-http");
 app.options('*', cors({
     origin:true,
     credentials:true,
-    maxAge:50000
+    maxAge:30000
 }));
 // setting
 dotenv.config();
@@ -24,8 +24,8 @@ mongoose.connect(process.env.DB_URL, {
 }, (err) => {
     if (err) console.error(err);
     else console.log('Connected Database')
-});
 
+});
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 // app.use(cookieParser());
@@ -77,6 +77,10 @@ app.use('/api/transaction', authVerify, transactionRouter);
 app.use('/api/center', authVerify, centerRouter);
 
 app.get('/', function(req, res) {
+    return res.json({ message: "Welcome to our page" });
+});
+
+app.get('/api', function(req, res) {
     return res.json({ message: "Welcome to our page" });
 });
 // app.get('/error', (req, res, next) => {
