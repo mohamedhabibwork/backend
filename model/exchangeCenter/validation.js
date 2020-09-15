@@ -1,4 +1,4 @@
-const Joi=require('@hapi/joi');
+const Joi=require('joi');
 exports.centerData=(data)=>{
      let schema=Joi.object().keys({
          wallet:Joi.number().min(0).required(),

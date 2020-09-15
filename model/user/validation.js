@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 exports.registerValidation = (data) => {
     let schema = Joi.object({
         name: Joi.string().min(3).required(),

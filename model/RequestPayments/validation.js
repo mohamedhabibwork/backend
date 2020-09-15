@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 exports.requestData = (data) => {
     let schema = Joi.object({
         amount: Joi.number().required(),

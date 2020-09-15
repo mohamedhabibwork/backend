@@ -6,6 +6,7 @@ let mongoose = require('mongoose');
 let dotenv = require('dotenv');
 let cors = require('cors');
 let port = process.env.PORT || 3333;
+const serverless = require("serverless-http");
 
 app.options('*', cors({
     origin:true,
@@ -88,7 +89,9 @@ app.use((error, req, res, next) => {
     const { data, message } = error;
     res.status(status).json({ message, data });
 });
+module.exports=app;
+module.exports.handler = serverless(app);
 
-app.listen(port, () => {
-    console.log('Web site is running in url : http://localhost:' + port)
+// app.listen(port, () => {
+//     console.log('Web site is running in url : http://localhost:' + port)
 });

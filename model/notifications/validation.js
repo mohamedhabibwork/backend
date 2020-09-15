@@ -1,4 +1,4 @@
-const Joi=require('@hapi/joi');
+const Joi=require('joi');
 exports.notificationData=(data)=>{
      let schema=Joi.object({
          title:Joi.string().min(3).optional(),
