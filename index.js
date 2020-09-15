@@ -93,6 +93,6 @@ app.use((error, req, res, next) => {
 module.exports=app;
 module.exports.handler=serverless(app);
 
-// app.listen(port, () => {
-//     console.log('Web site is running in url : http://localhost:' + port)
-// });
+app.listen(port, () => {
+    console.log('Web site is running in url : http://localhost:' + port)
+});
