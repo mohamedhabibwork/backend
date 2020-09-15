@@ -4,7 +4,7 @@
     "description": "this is Private",
     "main": "index.js",
     "scripts": {
-        "start": "node index ",
+        "start": "pm2 start index.js ",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
@@ -31,9 +31,11 @@
         "mongodb": "^3.5.2",
         "mongoose": "^5.8.10",
         "netlify-lambda": "^1.4.3",
+        "pm2": "^4.4.1",
         "serverless-http": "^1.9.1"
     },
     "devDependencies": {
+        "eslint": "^7.9.0",
         "nodemon": "^2.0.2"
     }
 }
