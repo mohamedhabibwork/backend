@@ -4,11 +4,18 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const axios = require("axios");
 const { registerValidation, loginValidation } = require("../../model/user/validation");
+
 async function getLocation() {
-    let ip = await axios.get('https://ipapi.co/ip/').then(respone => respone.data);
+    try {
+     
+    let ip = await axios.get('https://ipapi.co/ip/').then(respone => respone.data).catch(err => console.log(err));
     let dataIP = await axios.get('https://ipapi.co/' + ip + '/json/').then(respone => respone.data);
     dataIP.createAt = Date.now();
-    return dataIP;
+    return dataIP;   
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
 exports.register = async(req, res) => {
 
@@ -46,19 +53,27 @@ exports.register = async(req, res) => {
 exports.login = async(req, res) => {
     let { error } = await loginValidation(req.body);
     if (error) return res.json({ error: error.details[0].message });
+
     let user = await User.findOne({ email: req.body.email });
     if (!user) return res.json({ message: "Email doesn't exists" });
+
     let compare = await bcrypt.compare(req.body.password, user.password);
     if (!compare) return res.json({ message: "Email or password wrong" });
+    
     let token = jwt.sign({ _id: user._id }, process.env.TOKEN_LOGIN, { expiresIn: Date.now() + (60 * 60 * 24 * 365) });
+    
     let expiresIn = Date.now() + 3600;
+    
     let dataIP = await getLocation();
     if (dataIP) user.locations.push(dataIP);
+    
     await user.save();
+    
     res.header(process.env.TOKEN_NAME, token).json({
         [process.env.TOKEN_NAME]: /*"Bearer "+*/ token,
         expiresIn
     });
+
 };
 exports.logout = async(req, res) => {
     try {
