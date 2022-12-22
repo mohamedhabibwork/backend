@@ -27,7 +27,7 @@
         "express-jwt": "^5.3.1",
         "fs": "0.0.1-security",
         "joi": "^17.2.1",
-        "jsonwebtoken": "^8.5.1",
+        "jsonwebtoken": "^9.0.0",
         "mongodb": "^3.5.2",
         "mongoose": "^5.8.10",
         "netlify-lambda": "^1.4.3",
